@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مذاكرتي – تانية بكالوريا</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1) تسجيل الدخول -->
+  <section id="loginView" class="view login">
+    <form id="loginForm" class="login-box" autocomplete="off">
+      <h1>مذاكرتي</h1>
+      <p class="sub">مكانك لتنظيم مذاكرة تانية بكالوريا</p>
+
+      <label for="nameInput">اسمك</label>
+      <input id="nameInput" type="text" maxlength="30" placeholder="اكتب اسمك هنا" required>
+
+      <label for="trackSelect">مادة المسار</label>
+      <select id="trackSelect" required>
+        <option value="" disabled selected>اختار مادة المسار</option>
+        <option value="physics">فيزياء</option>
+        <option value="math">رياضة</option>
+        <option value="chemistry">كيمياء</option>
+        <option value="programming">برمجة</option>
+        <option value="psychology">علم نفس</option>
+        <option value="french">فرنساوي</option>
+        <option value="accounting">محاسبة</option>
+        <option value="business">إدارة أعمال</option>
+      </select>
+
+      <p id="loginError" class="error" role="alert" hidden></p>
+      <button type="submit" class="btn primary">دخول</button>
+    </form>
+  </section>
+
+  <!-- 2) الصفحة الرئيسية -->
+  <section id="homeView" class="view" hidden>
+    <header class="topbar">
+      <h2 id="welcome"></h2>
+      <button id="logoutBtn" class="btn ghost" type="button">تسجيل خروج</button>
+    </header>
+
+    <main class="home-grid">
+      <div>
+        <h3 class="block-title">موادك</h3>
+        <div id="subjectsGrid" class="subjects"></div>
+      </div>
+
+      <aside class="planner" aria-labelledby="plannerTitle">
+        <h3 id="plannerTitle" class="block-title">جدول مذاكرة اليوم</h3>
+        <p id="plannerTimer" class="timer">اكتب أول مهمة وهيبدأ العد التنازلي (٢٤ ساعة).</p>
+
+        <form id="taskForm" class="task-form">
+          <input id="taskText" type="text" maxlength="60" placeholder="مثال: حل ٣ مسائل فيزياء" required>
+          <input id="taskTime" type="time" aria-label="ميعاد المهمة">
+          <button class="btn primary" type="submit">إضافة</button>
+        </form>
+
+        <ul id="taskList" class="task-list"></ul>
+        <p id="taskEmpty" class="empty">لسه مفيش مهام. ابدأ بمهمة صغيرة.</p>
+      </aside>
+    </main>
+  </section>
+
+  <!-- 3) صفحة المادة -->
+  <section id="subjectView" class="view" hidden>
+    <header class="topbar">
+      <button id="backBtn" class="btn ghost" type="button">رجوع</button>
+      <h2 id="subjectTitle"></h2>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" role="tab" data-tab="notes" type="button">الملاحظات</button>
+      <button class="tab" role="tab" data-tab="books" type="button">الكتب</button>
+    </nav>
+
+    <main>
+      <div id="notesPanel" class="panel">
+        <form id="noteForm" class="note-form">
+          <textarea id="noteText" rows="3" placeholder="اكتب ملاحظتك هنا..." required></textarea>
+          <button class="btn primary" type="submit">حفظ الملاحظة</button>
+        </form>
+        <ul id="noteList" class="note-list"></ul>
+        <p id="noteEmpty" class="empty">مفيش ملاحظات في المادة دي لسه.</p>
+      </div>
+
+      <div id="booksPanel" class="panel" hidden>
+        <ul id="bookList" class="book-list"></ul>
+        <p id="bookEmpty" class="empty">كتب المادة دي هتتضاف قريب.</p>
+      </div>
+    </main>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
